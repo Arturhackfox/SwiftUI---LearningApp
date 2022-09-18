@@ -26,8 +26,19 @@ struct HomeView: View {
                         
                         ForEach(model.modules){ module in
                             
-                            // Learning card
-                            HomeViewRowCards(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) lessons", time: module.content.time)
+                            
+                            NavigationLink(
+                                destination:
+                                    ContentViewLessonList()
+                                    .onAppear(perform: {
+                                        model.beginModule(module.id)
+                                    })
+                            ){
+                                
+                                // Learning card
+                                HomeViewRowCards(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) lessons", time: module.content.time)
+                            }
+                                .accentColor(.black)
                             
                             // Learning card
                             HomeViewRowCards(image: module.test.image, title: "\(module.category)", description: module.test.description, count: "\(module.test.questions.count) Questions ", time: module.test.time)
