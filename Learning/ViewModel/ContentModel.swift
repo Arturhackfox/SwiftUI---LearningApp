@@ -15,13 +15,13 @@ class ContentModel: ObservableObject {
     
     init(){
         
-        self.getLocalData()
+        getLocalData()
         
     }
     
     func getLocalData(){
         
-        let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json ")
+        let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
         
         do{
             let jsonData = try Data(contentsOf: jsonUrl!)

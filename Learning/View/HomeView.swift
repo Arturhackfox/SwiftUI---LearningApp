@@ -11,13 +11,36 @@ struct HomeView: View {
     
     @EnvironmentObject var model: ContentModel
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        
+        NavigationView{
+            
+            VStack(alignment: .leading){
+                
+                Text("What do you want to do today ?")
+                    .padding(.leading, 20)
+                
+                ScrollView{
+                    
+                    LazyVStack{
+                        
+                        ForEach(model.modules){ module in
+                            
+                            // Learning card
+                            HomeViewRowCards(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) lessons", time: module.content.time)
+                            
+                            // Learning card
+                            HomeViewRowCards(image: module.test.image, title: "\(module.category)", description: module.test.description, count: "\(module.test.questions.count) Questions ", time: module.test.time)
+                            
+                        }
+                        
+                    }
+                    .padding()
+                }
+                
+            }
+            .navigationTitle("Get Started")
         }
-        .padding()
     }
 }
 
