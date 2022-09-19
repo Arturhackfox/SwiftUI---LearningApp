@@ -51,18 +51,44 @@ struct ContentDetailViewInsideList: View {
                     
                 }
                 
+            } else {
+
+                Button {
+                    model.currentSelectedContent = nil
+            } label: {
+               
+                    ZStack{
+                        
+                        Rectangle()
+                            .foregroundColor(.green)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                            .frame(height: 48)
+                        
+                        
+                        Text("Complete")
+                            .foregroundColor(.white)
+                            .bold()
+                    }
+                    
+                    
+                }
             }
 
-            
-        }
+                
+                
+                
+            }
         .navigationTitle(lesson?.title ?? "")
         .padding()
+        }
+      
         
         
         
         
     }
-}
+
 
 struct ContentDetailViewInsideList_Previews: PreviewProvider {
     static var previews: some View {

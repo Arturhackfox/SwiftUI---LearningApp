@@ -32,7 +32,10 @@ struct HomeView: View {
                                     ContentViewLessonList()
                                     .onAppear(perform: {
                                         model.beginModule(module.id)
-                                    })
+                                    }),
+                                tag: module.id,
+                                selection: $model.currentSelectedContent
+                                
                             ){
                                 
                                 // Learning card
