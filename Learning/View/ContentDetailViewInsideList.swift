@@ -26,7 +26,7 @@ struct ContentDetailViewInsideList: View {
             
             
             CodeTextView()
-            
+                .frame(height: 48)
             
             if model.hasNextLesson() {
                 
@@ -36,10 +36,7 @@ struct ContentDetailViewInsideList: View {
                     
                     ZStack{
                         
-                        Rectangle()
-                            .foregroundColor(.green)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
+                        RectangleCard(color: Color.green)
                             .frame(height: 48)
                         
                         
@@ -59,12 +56,7 @@ struct ContentDetailViewInsideList: View {
                
                     ZStack{
                         
-                        Rectangle()
-                            .foregroundColor(.green)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                            .frame(height: 48)
-                        
+                        RectangleCard(color: Color.green)
                         
                         Text("Complete")
                             .foregroundColor(.white)
@@ -93,5 +85,6 @@ struct ContentDetailViewInsideList: View {
 struct ContentDetailViewInsideList_Previews: PreviewProvider {
     static var previews: some View {
         ContentDetailViewInsideList()
+            .environmentObject(ContentModel())
     }
 }

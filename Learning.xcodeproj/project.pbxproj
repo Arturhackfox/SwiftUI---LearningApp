@@ -25,6 +25,7 @@
 		32A97EAF28D77BDA00018B91 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A97EAE28D77BDA00018B91 /* AVKit.framework */; };
 		32A97EB328D7800400018B91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A97EB228D7800400018B91 /* Constants.swift */; };
 		32A97F2A28D827C700018B91 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A97F2928D827C700018B91 /* CodeTextView.swift */; };
+		32A97F6428DAD24000018B91 /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A97F6328DAD24000018B91 /* RectangleCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		32A97EAE28D77BDA00018B91 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		32A97EB228D7800400018B91 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32A97F2928D827C700018B91 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
+		32A97F6328DAD24000018B91 /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				32A97EA928D774D200018B91 /* ContentViewListRow.swift */,
 				32A97EAB28D7777700018B91 /* ContentDetailViewInsideList.swift */,
 				32A97F2928D827C700018B91 /* CodeTextView.swift */,
+				32A97F6328DAD24000018B91 /* RectangleCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				32A97F2A28D827C700018B91 /* CodeTextView.swift in Sources */,
 				32A97EA428D734E700018B91 /* Models.swift in Sources */,
 				32A97EAC28D7777700018B91 /* ContentDetailViewInsideList.swift in Sources */,
+				32A97F6428DAD24000018B91 /* RectangleCard.swift in Sources */,
 				32A97EB328D7800400018B91 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
