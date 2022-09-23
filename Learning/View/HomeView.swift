@@ -43,8 +43,22 @@ struct HomeView: View {
                             }
                             .accentColor(.black)
                             
-                            // Learning card
-                            HomeViewRowCards(image: module.test.image, title: "\(module.category)", description: module.test.description, count: "\(module.test.questions.count) Questions ", time: module.test.time)
+                            
+                            NavigationLink(
+                                destination: TestView()
+                                    .onAppear(perform: {
+                                    model.beginTest(module.id)
+                                })
+                                   ,
+                                tag: module.id,
+                                selection: $model.currentTestSelected) {
+                                    
+                                    // Test card
+                                    HomeViewRowCards(image: module.test.image, title: "\(module.category)", description: module.test.description, count: "\(module.test.questions.count) Questions ", time: module.test.time)
+                                }
+                                .accentColor(.black)
+                            
+                            
                             
                         }
                         

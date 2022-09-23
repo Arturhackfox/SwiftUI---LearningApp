@@ -57,10 +57,12 @@ struct ContentDetailViewInsideList: View {
                     ZStack{
                         
                         RectangleCard(color: Color.green)
+                            .frame(height: 48)
                         
                         Text("Complete")
                             .foregroundColor(.white)
                             .bold()
+                            
                     }
                     
                     

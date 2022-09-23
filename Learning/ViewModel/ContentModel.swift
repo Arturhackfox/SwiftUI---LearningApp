@@ -17,10 +17,15 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
-    @Published var lessonDescription = NSAttributedString()
+    @Published var currentQuestion: Question?
+    var currentQuestionIndex = 0
+    
+    @Published var codeTextView = NSAttributedString()
     var styleData: Data?
     
     @Published var currentSelectedContent: Int?
+    
+    @Published var currentTestSelected: Int?
     
     init(){
         
@@ -92,9 +97,23 @@ class ContentModel: ObservableObject {
         
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
         
-        lessonDescription = addStyling(currentLesson!.explanation )
+        codeTextView = addStyling(currentLesson!.explanation )
         
     }
+    
+    func beginTest (_ moduleId: Int) {
+        
+        beginModule(moduleId)
+        
+        currentQuestionIndex = 0
+        
+        if currentModule?.test.questions.count ?? 0 > 0 {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            codeTextView = addStyling(currentQuestion!.content)
+        }
+        
+    }
+    
     
     func hasNextLesson() -> Bool {
         
@@ -110,7 +129,7 @@ class ContentModel: ObservableObject {
             
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
             
-            lessonDescription = addStyling(currentLesson!.explanation)
+            codeTextView = addStyling(currentLesson!.explanation)
             
         } else {
             
@@ -143,6 +162,7 @@ class ContentModel: ObservableObject {
         
         return resultString
     }
+    
     
     
 }

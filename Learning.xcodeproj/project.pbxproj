@@ -26,6 +26,7 @@
 		32A97EB328D7800400018B91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A97EB228D7800400018B91 /* Constants.swift */; };
 		32A97F2A28D827C700018B91 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A97F2928D827C700018B91 /* CodeTextView.swift */; };
 		32A97F6428DAD24000018B91 /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A97F6328DAD24000018B91 /* RectangleCard.swift */; };
+		32A97FBF28DC314000018B91 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A97FBE28DC314000018B91 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		32A97EB228D7800400018B91 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32A97F2928D827C700018B91 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		32A97F6328DAD24000018B91 /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
+		32A97FBE28DC314000018B91 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				32A97EA728D76BBA00018B91 /* ContentViewLessonList.swift */,
 				32A97EA928D774D200018B91 /* ContentViewListRow.swift */,
 				32A97EAB28D7777700018B91 /* ContentDetailViewInsideList.swift */,
+				32A97FBE28DC314000018B91 /* TestView.swift */,
 				32A97F2928D827C700018B91 /* CodeTextView.swift */,
 				32A97F6328DAD24000018B91 /* RectangleCard.swift */,
 			);
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A97FBF28DC314000018B91 /* TestView.swift in Sources */,
 				32A97EAA28D774D200018B91 /* ContentViewListRow.swift in Sources */,
 				32A97EA828D76BBA00018B91 /* ContentViewLessonList.swift in Sources */,
 				32A97EA628D7494500018B91 /* HomeViewRowCards.swift in Sources */,
