@@ -5,9 +5,10 @@
 //  Created by Arthur Sh on 18.09.2022.
 //
 
+
 import SwiftUI
 
-struct HomeViewRowCards: View {
+struct HomeViewRow: View {
     
     var image: String
     var title: String
@@ -17,69 +18,70 @@ struct HomeViewRowCards: View {
     
     var body: some View {
         
-        ZStack{
+        ZStack {
             
             Rectangle()
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 .aspectRatio(CGSize(width: 335, height: 175), contentMode: .fit)
+                
             
-            HStack{
-                                            
+            HStack {
+                
+                // Image
                 Image(image)
                     .resizable()
                     .frame(width: 116, height: 116)
                     .clipShape(Circle())
-
+                
                 Spacer()
                 
-                VStack(alignment: .leading, spacing: 10){
+                // Text
+                VStack (alignment: .leading, spacing: 10) {
                     
-                    Text("Learn \(title )")
+                    // Headline
+                    Text(title)
                         .bold()
                     
+                    // Description
                     Text(description)
                         .padding(.bottom, 20)
                         .font(.caption)
                     
                     // Icons
-                    HStack{
+                    HStack {
                         
+                        // Number of lessons/questions
                         Image(systemName: "text.book.closed")
-                             .resizable()
+                            .resizable()
                             .frame(width: 15, height: 15)
-                        
-                        
                         Text(count)
-                            .font(.system(size: 10))
+                            .font(Font.system(size: 10))
                         
                         Spacer()
                         
+                        // Time
                         Image(systemName: "clock")
                             .resizable()
-                            .frame(width: 15, height: 15 )
-                        
+                            .frame(width: 15, height: 15)
                         Text(time)
-                            .font(.system(size: 9))
+                            .font(Font.system(size: 10))
+                        
                     }
-                    
                 }
-                .padding(20)
-                
-
-                
+                .padding(.leading, 20)
             }
             .padding(.horizontal, 20)
             
-            
-             }
+        }
+        
         
     }
 }
 
-struct HomeViewRowCards_Previews: PreviewProvider {
+struct HomeViewRow_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewRowCards(image: "swift", title: "Learn Swift", description: "descriptiondescriptiondescriptiondescription, ", count: "12 lessons", time: "2 hours")
+        HomeViewRow(image: "swift", title: "Learn Swift", description: "some description", count: "10 Lessons", time: "2 Hours")
     }
 }

@@ -9,7 +9,6 @@ import SwiftUI
 import AVKit
 
 struct ContentDetailViewInsideList: View {
-    
     @EnvironmentObject var model: ContentModel
     
     var body: some View {
@@ -17,76 +16,66 @@ struct ContentDetailViewInsideList: View {
         let lesson = model.currentLesson
         let url = URL(string: Constants.videoHostUrl + (lesson?.video ?? ""))
         
-        VStack{
-            
+        VStack {
+            // Only show video if we get a valid URL
             if url != nil {
                 VideoPlayer(player: AVPlayer(url: url!))
                     .cornerRadius(10)
             }
             
-            
+            // Description
             CodeTextView()
-                .frame(height: 48)
             
+            // Show next lesson button, only if there is a next lesson
             if model.hasNextLesson() {
                 
-                Button {
-                    model.nextLesson()
-                } label: {
+                Button(action: {
                     
-                    ZStack{
-                        
+                    // Advance the lesson
+                    model.nextLesson()
+                    
+                }, label: {
+                    
+                    ZStack {
+                    
                         RectangleCard(color: Color.green)
-                            .frame(height: 48)
-                        
+                            .frame(height:48)
                         
                         Text("Next Lesson: \(model.currentModule!.content.lessons[model.currentLessonIndex + 1].title)")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.white)
                             .bold()
                     }
-                    
-                    
-                }
+                })
+            }
+            else {
+                // Show the complete button instead
                 
-            } else {
-
-                Button {
-                    model.currentSelectedContent = nil
-            } label: {
-               
-                    ZStack{
-                        
+                Button(action: {
+                    
+                    // Take the user back to the homeview
+                    model.currentContentSelected = nil
+                    
+                }, label: {
+                    
+                    ZStack {
+                    
                         RectangleCard(color: Color.green)
-                            .frame(height: 48)
+                            .frame(height:48)
                         
                         Text("Complete")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.white)
                             .bold()
-                            
                     }
-                    
-                    
-                }
+                })
             }
-
-                
-                
-                
-            }
-        .navigationTitle(lesson?.title ?? "")
-        .padding()
         }
-      
-        
-        
-        
-        
+            .padding()
+            .navigationBarTitle(lesson?.title ?? "")
     }
+}
 
-
-struct ContentDetailViewInsideList_Previews: PreviewProvider {
+struct ContentDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ContentDetailViewInsideList()
-            .environmentObject(ContentModel())
     }
 }

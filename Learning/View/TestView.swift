@@ -9,26 +9,29 @@ import SwiftUI
 
 struct TestView: View {
     
-    @EnvironmentObject var model: ContentModel
+    @EnvironmentObject var model:ContentModel
     
-    @State var selectedAnswerIndex: Int?
+    @State var selectedAnswerIndex:Int?
     @State var submitted = false
     
     @State var numCorrect = 0
+    @State var showResults = false
     
     var body: some View {
         
-        if model.currentQuestion != nil {
+        if model.currentQuestion != nil &&
+            showResults == false {
             
-            VStack(alignment: .leading){
-                  
+            VStack (alignment: .leading) {
+                // Question number
                 Text("Question \(model.currentQuestionIndex + 1) of \(model.currentModule?.test.questions.count ?? 0)")
                     .padding(.leading, 20)
                 
+                // Question
                 CodeTextView()
-                    .padding(.horizontal, 20 )
+                    .padding(.horizontal, 20)
                 
-                
+                // Answers
                 ScrollView {
                     VStack {
                         ForEach (0..<model.currentQuestion!.answers.count, id: \.self) { index in
@@ -92,40 +95,84 @@ struct TestView: View {
                     .padding()
                 }
                 
-                
-                // MARK: Sumbit button
+                // Submit Button
                 Button {
                     
-                    submitted = true
-                    
-                    if selectedAnswerIndex == model.currentQuestion!.correctIndex {
+                    // Check if answer has been submitted
+                    if submitted == true {
                         
-                        numCorrect += 1
-                        
+                        // Check if it's the last question
+                        if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
+                            
+                            // Show the results
+                            showResults = true
+                        }
+                        else {
+                            // Answer has already been submitted, move to next question
+                            model.nextQuestion()
+                            
+                            // Reset properties
+                            submitted = false
+                            selectedAnswerIndex = nil
+                        }
                     }
-                    
+                    else {
+                        // Submit the answer
+                        
+                        // Change submitted state to true
+                        submitted = true
+                        
+                        // Check the answer and increment the counter if correct
+                        if selectedAnswerIndex == model.currentQuestion!.correctIndex {
+                            numCorrect += 1
+                        }
+                    }
                     
                 } label: {
-                    ZStack{
+                    
+                    ZStack {
                         
-                        RectangleCard(color: .green )
+                        RectangleCard(color: .green)
                             .frame(height: 48)
                         
-                        Text("Submit")
-                            .foregroundColor(.white)
+                        Text(buttonText)
                             .bold()
+                            .foregroundColor(Color.white)
                     }
                     .padding()
-                    
                 }
                 .disabled(selectedAnswerIndex == nil)
+
             }
-            .navigationTitle("\(model.currentModule?.category ?? " ") Test")
+            .navigationBarTitle("\(model.currentModule?.category ?? "") Test")
+            
+        }
+        else if showResults == true {
+            // If current question is nil, we show the result view
+            TestResultView(numCorrect: numCorrect)
         }
         else {
             ProgressView()
         }
         
+    }
+    
+    var buttonText: String {
+        
+        // Check if answer has been submitted
+        if submitted == true {
+            if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
+                // This is the last question
+                return "Finish"
+            }
+            else {
+                // There is a next question
+                return "Next"
+            }
+        }
+        else {
+            return "Submit"
+        }
     }
 }
 

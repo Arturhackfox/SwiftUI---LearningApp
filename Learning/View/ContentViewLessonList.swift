@@ -10,46 +10,36 @@ import SwiftUI
 struct ContentViewLessonList: View {
     
     @EnvironmentObject var model: ContentModel
+    var index: Int
     
     var body: some View {
         
-        ScrollView{
+        let lesson = model.currentModule!.content.lessons[index]
+        
+        // Lesson card
+        ZStack (alignment: .leading) {
             
-            LazyVStack{
+            Rectangle()
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                .frame(height: 66)
+            
+            HStack (spacing: 30) {
                 
-                if model.currentModule != nil {
-                    
-                    ForEach(0..<model.currentModule!.content.lessons.count, id: \.self){ index in
-                        
-                        NavigationLink(
-                            destination:
-                                ContentDetailViewInsideList()
-                                .onAppear(perform: {
-                                    model.beginlesson(index)
-                                })
-                        ) {
-                            
-                            ContentViewListRow(index: index)
-                            
-                        }
-                        
-                    }
+                Text(String(index + 1))
+                    .bold()
+                
+                VStack (alignment: .leading) {
+                    Text(lesson.title)
+                        .bold()
+                    Text(lesson.duration)
                 }
                 
             }
-            .accentColor(.black)
             .padding()
-            .navigationTitle("Learn \(model.currentModule?.category ?? "" )")
-            
         }
+            .padding(.bottom, 5)
         
-        
-    }
-}
-
-struct ContentViewLessonList_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentViewLessonList()
-            .environmentObject(ContentModel())
     }
 }
